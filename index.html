@@ -49,62 +49,20 @@
 </head>
 <body>
 
-<header>liste Kdos</header>
+<header>Liste Kdos</header>
 
 <table id="gift-table">
   <tbody>
-    <!-- Les lignes seront générées par JavaScript -->
+    <tr>
+      <td><a href="https://www.amazon.fr/Ordinateur-Portable-Pollici-Bluetooth-Tablette/dp/B0FJ8FMMSM/ref=sr_1_1_sspa?dib=eyJ2IjoiMSJ9.4V2jhhWXK8x6FtG2JnDSghA6SowmA0VyPYv9GIyT4eHvkel52PgdY42KfU6iQ44m2MUozkZJGDKkG4LFsDL3wxzrfDCzj-LtjdcPeYQx72OPjXNjFsSSyv5YZqkofJWKd8c_O4cU6EFf_JZP1grcgfsWaoVeDiJCzdfRChPucHLxoYlyl4OjT3aEUvM0HiIJtOhQCCI9-MDraSzsKi1nO_UJhdauY4oSXd7Ee0MyYrkonUlT357dytusknN6tx03UGZQmz80UYjzPJw8kP5hu_fgMf3EvY2pgUtS73cNIgI.j3X2iDunQX9hd2035GqhKuR9sGc2R8WOJmOsj3H7WCk&dib_tag=se&qid=1756136463&refinements=p_36%3A9733299031&rnid=9733298031&s=computers&sr=1-1-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGZfYnJvd3Nl&psc=1" target="_blank" title="Ordinateur Portable Pollici Bluetooth Tablette">Ordinateur Portable Pollici Bluetooth Tablette</a></td>
+      <td><button id="btn-0">Pas dispo</button></td>
+    </tr>
+    <tr>
+      <td><a href="https://www.amazon.fr/Ordinateur-Portable-Pollici-Bluetooth-Tablette/dp/B0FJ8FMMSM/ref=sr_1_1_sspa?dib=eyJ2IjoiMSJ9.4V2jhhWXK8x6FtG2JnDSghA6SowmA0VyPYv9GIyT4eHvkel52PgdY42KfU6iQ44m2MUozkZJGDKkG4LFsDL3wxzrfDCzj-LtjdcPeYQx72OPjXNjFsSSyv5YZqkofJWKd8c_O4cU6EFf_JZP1grcgfsWaoVeDiJCzdfRChPucHLxoYlyl4OjT3aEUvM0HiIJtOhQCCI9-MDraSzsKi1nO_UJhdauY4oSXd7Ee0MyYrkonUlT357dytusknN6tx03UGZQmz80UYjzPJw8kP5hu_fgMf3EvY2pgUtS73cNIgI.j3X2iDunQX9hd2035GqhKuR9sGc2R8WOJmOsj3H7WCk&dib_tag=se&qid=1756136463&refinements=p_36%3A9733299031&rnid=9733298031&s=computers&sr=1-1-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGZfYnJvd3Nl&psc=1" target="_blank" title="Ordinateur Portable Pollici Bluetooth Tablette">Ordinateur Portable Pollici Bluetooth Tablette</a></td>
+      <td><button id="btn-1">Pas dispo</button></td>
+    </tr>
   </tbody>
 </table>
 
 <script>
-  const table = document.getElementById('gift-table').querySelector('tbody');
-  const TOTAL_ROWS = 30;
-
-  // Fonction pour créer une ligne
-  function createRow(index) {
-    const tr = document.createElement('tr');
-
-    // Colonne de gauche : lien + description
-    const linkTd = document.createElement('td');
-    const link = document.createElement('a');
-    link.href = "#";
-    link.textContent = `Cadeau ${index + 1}`;
-    link.title = "Description du cadeau " + (index + 1);
-    linkTd.appendChild(link);
-
-    // Colonne de droite : bouton
-    const buttonTd = document.createElement('td');
-    const button = document.createElement('button');
-    button.textContent = 'Pas dispo';
-    button.id = `btn-${index}`;
-
-    // Vérifie si le bouton a déjà été cliqué
-    if (localStorage.getItem(button.id) === 'clicked') {
-      button.classList.add('clicked');
-    }
-
-    // Ajoute un écouteur pour le clic
-    button.addEventListener('click', () => {
-      button.classList.toggle('clicked');
-      const isClicked = button.classList.contains('clicked');
-      localStorage.setItem(button.id, isClicked ? 'clicked' : '');
-    });
-
-    buttonTd.appendChild(button);
-
-    // Ajoute les colonnes à la ligne
-    tr.appendChild(linkTd);
-    tr.appendChild(buttonTd);
-
-    return tr;
-  }
-
-  // Génère les 30 lignes
-  for (let i = 0; i < TOTAL_ROWS; i++) {
-    table.appendChild(createRow(i));
-  }
-</script>
-
-</body>
-</html>
+  const table = document.getElementById('gift-table').querySelector('tbod
