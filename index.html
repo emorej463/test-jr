@@ -1,11 +1,110 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Mon site GitHub</title>
+  <title>Liste Kdos</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: #f0f0f0;
+    }
+    header {
+      background-color: #007acc;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      font-size: 24px;
+      font-weight: bold;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px auto;
+      max-width: 800px;
+      background-color: white;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    th, td {
+      padding: 12px;
+      border-bottom: 1px solid #ddd;
+      text-align: left;
+    }
+    button {
+      padding: 8px 12px;
+      background-color: #ccc;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    button.clicked {
+      background-color: #ff4d4d;
+      color: white;
+    }
+    a {
+      color: #007acc;
+      text-decoration: none;
+    }
+  </style>
 </head>
 <body>
-  <h1>Bienvenue sur ma page GitHub !</h1>
-  <p>Ceci est mon tout premier site hébergé avec GitHub Pages.</p>
+
+<header>liste Kdos</header>
+
+<table id="gift-table">
+  <tbody>
+    <!-- Les lignes seront générées par JavaScript -->
+  </tbody>
+</table>
+
+<script>
+  const table = document.getElementById('gift-table').querySelector('tbody');
+  const TOTAL_ROWS = 30;
+
+  // Fonction pour créer une ligne
+  function createRow(index) {
+    const tr = document.createElement('tr');
+
+    // Colonne de gauche : lien + description
+    const linkTd = document.createElement('td');
+    const link = document.createElement('a');
+    link.href = "#";
+    link.textContent = `Cadeau ${index + 1}`;
+    link.title = "Description du cadeau " + (index + 1);
+    linkTd.appendChild(link);
+
+    // Colonne de droite : bouton
+    const buttonTd = document.createElement('td');
+    const button = document.createElement('button');
+    button.textContent = 'Pas dispo';
+    button.id = `btn-${index}`;
+
+    // Vérifie si le bouton a déjà été cliqué
+    if (localStorage.getItem(button.id) === 'clicked') {
+      button.classList.add('clicked');
+    }
+
+    // Ajoute un écouteur pour le clic
+    button.addEventListener('click', () => {
+      button.classList.toggle('clicked');
+      const isClicked = button.classList.contains('clicked');
+      localStorage.setItem(button.id, isClicked ? 'clicked' : '');
+    });
+
+    buttonTd.appendChild(button);
+
+    // Ajoute les colonnes à la ligne
+    tr.appendChild(linkTd);
+    tr.appendChild(buttonTd);
+
+    return tr;
+  }
+
+  // Génère les 30 lignes
+  for (let i = 0; i < TOTAL_ROWS; i++) {
+    table.appendChild(createRow(i));
+  }
+</script>
+
 </body>
 </html>
